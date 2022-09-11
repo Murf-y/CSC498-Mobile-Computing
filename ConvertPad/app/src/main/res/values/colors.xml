@@ -8,5 +8,7 @@
     <color name="grey_50">#E6E9EA</color>
     <color name="grey_200">#9B9595</color>
     <color name="grey_300">#928D8D</color>
+    <color name="grey_700">#FF1B1C1C</color>
+
 
 </resources>
