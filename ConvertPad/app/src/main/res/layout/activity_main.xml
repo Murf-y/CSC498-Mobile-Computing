@@ -101,6 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="64dp"
         android:elevation="10dp"
+        android:onClick="convert"
         android:paddingLeft="25dp"
         android:paddingTop="10dp"
         android:paddingRight="25dp"
@@ -112,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerBackground"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.48000002" />
 
     <TextView
         android:id="@+id/conversionResultText"
