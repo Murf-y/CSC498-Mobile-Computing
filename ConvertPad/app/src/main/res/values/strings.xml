@@ -6,4 +6,6 @@
     <string name="to">TO</string>
     <string name="empty_string" />
     <string name="convert">CONVERT</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
