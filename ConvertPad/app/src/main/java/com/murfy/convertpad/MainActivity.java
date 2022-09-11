@@ -9,10 +9,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
-    private boolean dollar_to_lbp = true;
+    private final NumberFormat NUMBER_FORMATTER = NumberFormat.getInstance(Locale.US);
 
+    private boolean dollar_to_lbp = true;
     private TextView from_component;
     private TextView to_component;
 
@@ -28,9 +32,22 @@ public class MainActivity extends AppCompatActivity {
     public void convert(View view){
         if(input == null) input = findViewById(R.id.numberInput);
         if(conversion_result_text == null) conversion_result_text = findViewById(R.id.conversionResultText);
-
+        if(NUMBER_FORMATTER.getMaximumFractionDigits() != 2) NUMBER_FORMATTER.setMaximumFractionDigits(2);
         String number = input.getText().toString();
-        conversion_result_text.setText(number);
+
+
+        float EXCHANGE_RATE = 40000;
+        if(dollar_to_lbp){
+            float number_value = Float.parseFloat(number);
+            String lbp_equivalent = NUMBER_FORMATTER.format((int) (number_value * EXCHANGE_RATE));
+            lbp_equivalent += " L.L.";
+            conversion_result_text.setText(lbp_equivalent);
+        }else{
+            int number_value = Integer.parseInt(number);
+            String usd_equivalent = NUMBER_FORMATTER.format(number_value / EXCHANGE_RATE);
+            usd_equivalent += " $";
+            conversion_result_text.setText(usd_equivalent);
+        }
         conversion_result_text.setVisibility(View.VISIBLE);
     }
     public void switchConversion(View view){
