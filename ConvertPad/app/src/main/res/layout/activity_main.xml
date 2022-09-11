@@ -49,7 +49,7 @@
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
-            android:textColorHint="#78909C"
+            android:textColorHint="?attr/colorSecondary"
             android:textDirection="locale"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +71,7 @@
                 android:layout_weight="1"
                 android:text="@string/from"
                 android:textAlignment="center"
+                android:textColor="?attr/colorSecondary"
                 app:drawableTopCompat="@drawable/ic_usd_component"></TextView>
 
             <ToggleButton
@@ -89,6 +90,7 @@
                 android:layout_weight="1"
                 android:text="@string/to"
                 android:textAlignment="center"
+                android:textColor="?attr/colorSecondary"
                 app:drawableTopCompat="@drawable/ic_lbp_component"
                 tools:ignore="TextContrastCheck"></TextView>
 
@@ -100,6 +102,7 @@
         android:id="@+id/converButton"
         android:layout_width="wrap_content"
         android:layout_height="64dp"
+        android:background="@drawable/button_rounded"
         android:elevation="10dp"
         android:onClick="convert"
         android:paddingLeft="25dp"
@@ -107,6 +110,7 @@
         android:paddingRight="25dp"
         android:paddingBottom="10dp"
         android:text="@string/convert"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:translationZ="10dp"
         app:layout_constraintBottom_toTopOf="@+id/conversionResultText"
