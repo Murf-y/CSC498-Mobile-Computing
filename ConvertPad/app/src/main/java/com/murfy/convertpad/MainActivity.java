@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             lbp_equivalent += " L.L.";
             conversion_result_text.setText(lbp_equivalent);
         }else{
-            int number_value = Integer.parseInt(number);
+            int number_value = (int) Float.parseFloat(number);
             String usd_equivalent = NUMBER_FORMATTER.format(number_value / EXCHANGE_RATE);
             usd_equivalent += " $";
             conversion_result_text.setText(usd_equivalent);
@@ -53,7 +53,10 @@ public class MainActivity extends AppCompatActivity {
     public void switchConversion(View view){
         if(from_component == null) from_component = findViewById(R.id.fromComponent);
         if(to_component == null) to_component = findViewById(R.id.toComponent);
+        if(input == null) input = findViewById(R.id.numberInput);
+
         dollar_to_lbp = !dollar_to_lbp;
+        input.setText("");
         from_component.setCompoundDrawablesWithIntrinsicBounds(0,dollar_to_lbp ? R.drawable.ic_usd_component : R.drawable.ic_lbp_component, 0, 0);
         to_component.setCompoundDrawablesWithIntrinsicBounds(0,dollar_to_lbp ? R.drawable.ic_lbp_component : R.drawable.ic_usd_component, 0, 0);
     }
