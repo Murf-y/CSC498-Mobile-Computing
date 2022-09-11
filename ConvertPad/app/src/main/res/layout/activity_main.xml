@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/headerBackground">
 
         <EditText
-            android:id="@+id/editTextNumberDecimal"
+            android:id="@+id/numberInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -78,6 +78,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/ic_carbon_arrows_horizontal"
+                android:onClick="switchConversion"
                 android:textOff="@string/empty_string"
                 android:textOn="@string/empty_string" />
 
@@ -123,6 +124,7 @@
         android:textAlignment="center"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="36sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/exchangeRateText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
