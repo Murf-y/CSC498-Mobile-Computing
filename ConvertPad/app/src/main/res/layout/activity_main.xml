@@ -22,6 +22,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <RadioGroup
+        android:id="@+id/themeRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_light_thumb"
+        android:contentDescription="@string/theme"
+        android:minWidth="30dp"
+        android:minHeight="30dp"
+        android:onClick="changeTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.031"
+        tools:ignore="TouchTargetSizeCheck" />
+
     <LinearLayout
         android:id="@+id/mainViewBox"
         android:layout_width="match_parent"

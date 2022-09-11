@@ -1,12 +1,13 @@
 package com.murfy.convertpad;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -25,10 +26,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        boolean isDarkTheme = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("isDarkTheme", false);
         super.onCreate(savedInstanceState);
+        setTheme(isDarkTheme ? R.style.DarkTheme : R.style.LightTheme);
         setContentView(R.layout.activity_main);
-    }
 
+        RadioGroup radio = findViewById(R.id.themeRadio);
+        radio.setBackground(ContextCompat.getDrawable(getApplicationContext(),isDarkTheme ? R.drawable.ic_dark_thumb: R.drawable.ic_light_thumb));
+    }
+    public void changeTheme(View view){
+        boolean isDarkTheme = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("isDarkTheme", false);
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("isDarkTheme", !isDarkTheme).apply();
+        recreate();
+    }
     public void convert(View view){
         if(input == null) input = findViewById(R.id.numberInput);
         if(conversion_result_text == null) conversion_result_text = findViewById(R.id.conversionResultText);
