@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">ConvertPad</string>
     <string name="background">background</string>
+    <string name="enter_value_here">Enter Value Here</string>
+    <string name="from">FROM</string>
+    <string name="to">TO</string>
+    <string name="empty_string" />
+    <string name="convert">CONVERT</string>
 </resources>
