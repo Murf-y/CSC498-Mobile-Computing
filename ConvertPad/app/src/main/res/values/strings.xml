@@ -8,4 +8,6 @@
     <string name="convert">CONVERT</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="invalid_credentials_try_again">⚠ Invalid Credentials, Try again</string>
 </resources>
