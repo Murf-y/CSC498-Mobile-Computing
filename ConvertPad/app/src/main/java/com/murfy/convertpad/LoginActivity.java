@@ -44,12 +44,12 @@ public class LoginActivity extends AppCompatActivity {
             TextView errorText = findViewById(R.id.errorTextView);
             email_input.setText("");
             password_input.setText("");
-            errorText.setVisibility(View.VISIBLE);
+            errorText.setAlpha(1);
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    errorText.setVisibility(View.GONE);
+                    errorText.animate().alpha(0).setDuration(1000);
                 }
             }, 3000);
         }
