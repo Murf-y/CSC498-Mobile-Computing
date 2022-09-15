@@ -5,7 +5,6 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
@@ -37,21 +36,14 @@ public class LoginActivity extends AppCompatActivity {
         String email_value = email_input.getText().toString();
         String password_value = password_input.getText().toString();
 
-        if(email_value.equals("user.leb") && password_value.equals("123456")){
+        if(Utils.isUser(email_value, password_value)){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }else{
-            TextView errorText = findViewById(R.id.errorTextView);
             email_input.setText("");
             password_input.setText("");
-            errorText.setAlpha(1);
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    errorText.animate().alpha(0).setDuration(1000);
-                }
-            }, 3000);
+            TextView errorText = findViewById(R.id.errorTextView);
+            Utils.showAndHideView(errorText);
         }
     }
 }

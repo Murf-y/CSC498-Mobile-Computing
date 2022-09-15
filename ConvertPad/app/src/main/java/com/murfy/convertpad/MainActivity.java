@@ -6,14 +6,18 @@ import androidx.core.content.ContextCompat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.concurrent.Callable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,15 +66,17 @@ public class MainActivity extends AppCompatActivity {
         if(NUMBER_FORMATTER.getMaximumFractionDigits() != 2) NUMBER_FORMATTER.setMaximumFractionDigits(2);
         String number = input.getText().toString();
 
+        if(!Utils.isNumeric(number)) return;
+
         float EXCHANGE_RATE = 40000;
         if(dollar_to_lbp){
-            float number_value = Float.parseFloat(number);
-            String lbp_equivalent = NUMBER_FORMATTER.format((int) (number_value * EXCHANGE_RATE));
+            BigDecimal number_value = BigDecimal.valueOf(Double.parseDouble(number));
+            String lbp_equivalent = NUMBER_FORMATTER.format((number_value.multiply(BigDecimal.valueOf(EXCHANGE_RATE))));
             lbp_equivalent += " L.L.";
             conversion_result_text.setText(lbp_equivalent);
         }else{
-            int number_value = (int) Float.parseFloat(number);
-            String usd_equivalent = NUMBER_FORMATTER.format(number_value / EXCHANGE_RATE);
+            BigInteger number_value = BigInteger.valueOf((long) Double.parseDouble(number));
+            String usd_equivalent = NUMBER_FORMATTER.format(number_value.divide(BigInteger.valueOf((long) EXCHANGE_RATE)));
             usd_equivalent += " $";
             conversion_result_text.setText(usd_equivalent);
         }
@@ -85,19 +91,17 @@ public class MainActivity extends AppCompatActivity {
         dollar_to_lbp = !dollar_to_lbp;
         input.setText("");
 
-        from_component.animate().alpha(0).setDuration(200);
-        to_component.animate().alpha(0).setDuration(200);
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                from_component.animate().alpha(1).setDuration(200);
-                to_component.animate().alpha(1).setDuration(200);
+        Utils.hideAndShowView(from_component, new Callable<Void>() {
+            public Void call(){
                 from_component.setCompoundDrawablesWithIntrinsicBounds(0,dollar_to_lbp ? R.drawable.ic_usd_component : R.drawable.ic_lbp_component, 0, 0);
-                to_component.setCompoundDrawablesWithIntrinsicBounds(0,dollar_to_lbp ? R.drawable.ic_lbp_component : R.drawable.ic_usd_component, 0, 0);
+                return null;
             }
-        }, 200);
-
+        });
+        Utils.hideAndShowView(to_component, new Callable<Void>() {
+            public Void call(){
+                to_component.setCompoundDrawablesWithIntrinsicBounds(0,dollar_to_lbp ? R.drawable.ic_lbp_component : R.drawable.ic_usd_component, 0, 0);
+                return null;
+            }
+        });
     }
 }
