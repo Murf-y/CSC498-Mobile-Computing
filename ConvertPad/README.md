@@ -13,8 +13,8 @@ Current application design is present in Design folder, available in the reposit
 - Figma file of the design
 
 <div style="display:flex; gap:5rem">
-    <img src="./Design/light_theme.png"></img>
-    <img src="./Design/dark_theme.png"></img>
+    <img style="width:500px"  src="./Design/light_theme.png"></img>
+    <img style="width:500px" src="./Design/dark_theme.png"></img>
 
 </div>
 
