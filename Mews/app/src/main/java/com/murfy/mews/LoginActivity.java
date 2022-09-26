@@ -3,6 +3,7 @@ package com.murfy.mews;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +11,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 
+import com.murfy.mews.Models.User;
+import com.murfy.mews.Services.DatabaseManager;
+import com.murfy.mews.Services.DatabaseService;
 import com.murfy.mews.databinding.ActivityLoginBinding;
+
+import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,6 +44,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(String user_name) {
+        User user = DatabaseService.getInstance(getApplicationContext()).createOrGetUser(user_name);
 
+        if(user == null){
+            recreate();
+        }
+        else{
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            i.putExtra("user", user);
+            startActivity(i);
+        }
     }
 }

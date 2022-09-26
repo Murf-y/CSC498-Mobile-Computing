@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.murfy.mews.Services.DatabaseService;
 import com.murfy.mews.Utils.AnimationHelper;
 import com.murfy.mews.Utils.Delayer;
 import com.murfy.mews.databinding.ActivitySplashAcivityBinding;
@@ -17,6 +18,7 @@ import java.util.concurrent.Callable;
 public class SplashAcivity extends AppCompatActivity {
 
     final int SPLASH_SCREEN_DURATION_IN_MILLISECONDS = 5000;
+    final int WAIT_TILL_DATABASE_LOADS_IN_MILLISECONDS = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +31,15 @@ public class SplashAcivity extends AppCompatActivity {
         AnimationHelper.getInstance().slideFromLeftToRight(binding.logo, 1000).fadeIn(binding.logo, 2000);
         AnimationHelper.getInstance().fadeIn(binding.text, 1000);
 
-        Delayer.getInstance().postAfter(new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
-                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(i);
+        Delayer.getInstance().postAfter(() -> {
+            DatabaseService.getInstance(getApplicationContext());
+            return null;
+        },  SPLASH_SCREEN_DURATION_IN_MILLISECONDS);
 
-                return null;
-            }
+        Delayer.getInstance().postAfter(() -> {
+            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(i);
+            return null;
         }, SPLASH_SCREEN_DURATION_IN_MILLISECONDS);
 
     }
