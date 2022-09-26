@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.murfy.mews.Utils.AnimationHelper;
 import com.murfy.mews.Utils.Delayer;
@@ -14,12 +16,14 @@ import java.util.concurrent.Callable;
 
 public class SplashAcivity extends AppCompatActivity {
 
-    private ActivitySplashAcivityBinding binding;
+    final int SPLASH_SCREEN_DURATION_IN_MILLISECONDS = 5000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySplashAcivityBinding.inflate(getLayoutInflater());
+        ActivitySplashAcivityBinding binding = ActivitySplashAcivityBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+
         setContentView(view);
 
         AnimationHelper.getInstance().slideFromLeftToRight(binding.logo, 1000).fadeIn(binding.logo, 2000);
@@ -33,7 +37,7 @@ public class SplashAcivity extends AppCompatActivity {
 
                 return null;
             }
-        }, 2000);
+        }, SPLASH_SCREEN_DURATION_IN_MILLISECONDS);
 
     }
 }

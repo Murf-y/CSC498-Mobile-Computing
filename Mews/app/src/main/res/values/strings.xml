@@ -2,4 +2,6 @@
     <string name="app_name">Mews</string>
     <string name="by_murf">by Murf</string>
     <string name="username">Username</string>
+    <string name="login">LOGIN</string>
+    <string name="todo">TODO</string>
 </resources>
