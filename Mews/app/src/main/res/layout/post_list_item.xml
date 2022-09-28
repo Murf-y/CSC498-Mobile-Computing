@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginVertical="5dp">
+    android:layout_marginVertical="5dp"
+    android:baselineAligned="false">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/post_item_card"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="10dp">
 
         <ImageView
             android:id="@+id/postImageView"
@@ -19,8 +21,10 @@
             android:layout_height="100dp"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="20dp"
+            android:contentDescription="TODO"
             android:foreground="@drawable/image_border"
-            android:scaleType="centerInside"
+            android:scaleType="fitXY"
+            tools:ignore="ImageContrastCheck"
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout

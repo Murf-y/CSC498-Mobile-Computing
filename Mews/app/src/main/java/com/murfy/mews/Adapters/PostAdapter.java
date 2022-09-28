@@ -34,8 +34,12 @@ public class PostAdapter extends ArrayAdapter<Post> {
         }
 
         ImageView postImage = convertView.findViewById(R.id.postImageView);
-        int drawableID = getContext().getResources().getIdentifier("placeholder", "drawable", getContext().getPackageName());
-        postImage.setImageResource(drawableID);
+        if(post_list.get(position).getImage() == null){
+            int drawableID = getContext().getResources().getIdentifier("placeholder", "drawable", getContext().getPackageName());
+            postImage.setImageResource(drawableID);
+        }else{
+            postImage.setImageBitmap(post_list.get(position).getImage());
+        }
 
         TextView postTitle = convertView.findViewById(R.id.postTitle);
         postTitle.setText(post_list.get(position).getTitle());

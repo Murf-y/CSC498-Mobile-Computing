@@ -30,6 +30,7 @@ public class DatabaseManager {
                 "created_at DATE NOT NULL," +
                 "location VARCHAR," +
                 "author_id INT NOT NULL," +
+                "image_base_64 TEXT,"+
                 "FOREIGN KEY(author_id)" +
                 " REFERENCES users(user_id));");
 
