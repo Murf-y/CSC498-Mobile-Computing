@@ -11,4 +11,5 @@
     <string name="post_title">Title</string>
     <string name="post_content">Content</string>
     <string name="post_location">Location</string>
+    <string name="favourite_posts">Favourite Posts</string>
 </resources>

@@ -31,6 +31,30 @@ public class PostDetails extends AppCompatActivity {
             i.putExtra("user", current_user);
             startActivity(i);
         });
+
+        boolean userFavouritePost = DatabaseService.getInstance(getApplicationContext()).userFavouritePost(current_user, current_post);
+        if(userFavouritePost){
+            int drawableID = getResources().getIdentifier("ic_fav_clicked", "drawable", getPackageName());
+            binding.favoriteButton.setImageResource(drawableID);
+        }
+        binding.favoriteButton.setOnClickListener(new View.OnClickListener() {
+            boolean flag = userFavouritePost;
+            @Override
+            public void onClick(View view) {
+                if(flag){
+                    DatabaseService.getInstance(getApplicationContext()).unfavoritePost(current_user, current_post);
+                    int drawableID = getResources().getIdentifier("ic_fav", "drawable", getPackageName());
+                    binding.favoriteButton.setImageResource(drawableID);
+                }
+                else{
+                    DatabaseService.getInstance(getApplicationContext()).favoritePost(current_user, current_post);
+                    int drawableID = getResources().getIdentifier("ic_fav_clicked", "drawable", getPackageName());
+                    binding.favoriteButton.setImageResource(drawableID);
+                }
+                flag = !flag;
+            }
+        });
+
         binding.postDetailsTitle.setText(current_post.getTitle());
         binding.postDetailsContent.setText(current_post.getContent());
         binding.postDetailsDate.setText(current_post.getCreatedAt());

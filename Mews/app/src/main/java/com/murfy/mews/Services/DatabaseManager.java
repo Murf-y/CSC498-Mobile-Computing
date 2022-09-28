@@ -36,12 +36,11 @@ public class DatabaseManager {
 
 
         // Create Favorites Table
-        db.execSQL("CREATE Table IF NOT EXISTS Favorites" +
-                "(favorite_id SERIAL," +
+        db.execSQL("CREATE Table IF NOT EXISTS favorites" +
+                "(favorite_id INTEGER PRIMARY KEY," +
                 " favorite_at TEXT NOT NULL," +
                 " user_id INT NOT NULL," +
                 " post_id INT NOT NULL," +
-                " PRIMARY KEY(favorite_id)," +
                 " FOREIGN KEY(user_id)" +
                 " REFERENCES users(user_id)," +
                 " FOREIGN KEY(post_id)" +
