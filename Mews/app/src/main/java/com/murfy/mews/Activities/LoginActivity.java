@@ -1,22 +1,19 @@
-package com.murfy.mews;
+package com.murfy.mews.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.murfy.mews.Models.User;
-import com.murfy.mews.Services.DatabaseManager;
+import com.murfy.mews.R;
 import com.murfy.mews.Services.DatabaseService;
 import com.murfy.mews.databinding.ActivityLoginBinding;
-
-import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -14,16 +14,19 @@
         android:theme="@style/Theme.Mews"
         tools:targetApi="31">
         <activity
-            android:name=".FavoritesActivity"
+            android:name=".Activities.PostDetails"
             android:exported="false" />
         <activity
-            android:name=".AddPostActivity"
+            android:name=".Activities.FavoritesActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activities.AddPostActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashAcivity"
+            android:name=".Activities.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="false" />
     </application>
 

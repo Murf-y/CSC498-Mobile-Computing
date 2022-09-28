@@ -5,86 +5,107 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_800"
-    tools:context=".MainActivity" >
+    tools:context=".Activities.MainActivity" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="18dp"
-        android:paddingVertical="12dp"
-        android:textAlignment="gravity"
+        android:layout_height="0dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto_regular"
-            android:text="Murf"
-            android:textColor="@color/pink"
-            android:textSize="30sp"
-            android:textStyle="bold|italic" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:orientation="vertical"
-            android:textAlignment="viewEnd">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                android:textAlignment="gravity"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Murf"
+                    android:textColor="@color/pink"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="vertical"
+                    android:textAlignment="viewEnd">
+
+                    <TextView
+                        android:id="@+id/DailyFeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/daily_feed"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/todayDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Friday, June 16"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/grey" />
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/DailyFeed"
-                android:layout_width="wrap_content"
+                android:id="@+id/LatestNews"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/daily_feed"
-                android:textAlignment="viewEnd"
+                android:layout_marginVertical="20dp"
+                android:layout_weight="1"
+                android:paddingHorizontal="18dp"
+                android:text="@string/latest_news"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintVertical_bias="0.050000012" />
 
-            <TextView
-                android:id="@+id/todayDate"
-                android:layout_width="wrap_content"
+            <ListView
+                android:id="@+id/postsList"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Friday, June 16"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/grey" />
+                android:layout_weight="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LatestNews"
+                app:layout_constraintVertical_bias="0.0" />
         </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/LatestNews"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="18dp"
-        android:text="@string/latest_news"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.06999999" />
-
-    <ListView
-        android:id="@+id/postsList"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LatestNews"
-        app:layout_constraintVertical_bias="0.0" />
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -96,7 +117,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout

@@ -4,8 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
+import com.murfy.mews.Models.Post;
 import com.murfy.mews.Models.User;
+
+import java.util.ArrayList;
 
 public class DatabaseService {
 
@@ -44,5 +48,35 @@ public class DatabaseService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public ArrayList<Post> getAllPosts(){
+        ArrayList<Post> list = new ArrayList<Post>();
+
+        try{
+            Cursor cursor = db_manager.db.rawQuery("SELECT * FROM POSTS ORDER BY POSTS.created_at DESC", null);
+            if (cursor.moveToFirst()){
+                int post_id_idx = cursor.getColumnIndex("post_id");
+                int post_title_idx = cursor.getColumnIndex("title");
+                int post_content_idx = cursor.getColumnIndex("content");
+                int post_created_at_idx = cursor.getColumnIndex("created_at");
+                int post_location_idx = cursor.getColumnIndex("location");
+                int post_author_id_idx = cursor.getColumnIndex("author_id");
+                do {
+                    int post_id = cursor.getInt(post_id_idx);
+                    String post_title = cursor.getString(post_title_idx);
+                    String post_content = cursor.getString(post_content_idx);
+                    String post_created_at = cursor.getString(post_created_at_idx);
+                    String post_location = cursor.getString(post_location_idx);
+                    int author_id = cursor.getInt(post_author_id_idx);
+                    list.add(new Post(post_id, post_title, post_content, post_created_at, post_location, author_id));
+                    Log.i("Helllo", "hello");
+                } while(cursor.moveToNext());
+            }
+            cursor.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
     }
 }

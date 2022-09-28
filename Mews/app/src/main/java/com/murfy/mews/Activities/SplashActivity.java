@@ -1,21 +1,17 @@
-package com.murfy.mews;
+package com.murfy.mews.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.murfy.mews.Services.DatabaseService;
 import com.murfy.mews.Utils.AnimationHelper;
 import com.murfy.mews.Utils.Delayer;
-import com.murfy.mews.databinding.ActivitySplashAcivityBinding;
+import com.murfy.mews.databinding.ActivitySplashActivityBinding;
 
-import java.util.concurrent.Callable;
-
-public class SplashAcivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     final int SPLASH_SCREEN_DURATION_IN_MILLISECONDS = 5000;
     final int WAIT_TILL_DATABASE_LOADS_IN_MILLISECONDS = 5000;
@@ -23,7 +19,7 @@ public class SplashAcivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivitySplashAcivityBinding binding = ActivitySplashAcivityBinding.inflate(getLayoutInflater());
+        ActivitySplashActivityBinding binding = ActivitySplashActivityBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
         setContentView(view);

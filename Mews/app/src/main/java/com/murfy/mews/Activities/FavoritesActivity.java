@@ -1,8 +1,10 @@
-package com.murfy.mews;
+package com.murfy.mews.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.murfy.mews.R;
 
 public class FavoritesActivity extends AppCompatActivity {
 
