@@ -27,7 +27,7 @@ public class DatabaseManager {
                 "(post_id INTEGER PRIMARY KEY," +
                 "title VARCHAR NOT NULL," +
                 "content VARCHAR NOT NULL," +
-                "created_at DATE NOT NULL," +
+                "created_at TEXT NOT NULL," +
                 "location VARCHAR," +
                 "author_id INT NOT NULL," +
                 "image_base_64 TEXT,"+
@@ -36,14 +36,15 @@ public class DatabaseManager {
 
 
         // Create Favorites Table
-//        db.execSQL("CREATE Table IF NOT EXISTS Favorites" +
-//                "(favorite_id SERIAL," +
-//                " favorite_at DATE NOT NULL," +
-//                " user_id INT NOT NULL," +
-//                " post_id INT NOT NULL," +
-//                " PRIMARY KEY(favorite_id)," +
-//                " FOREIGN KEY(user_id)" +
-//                " REFERENCES users(user_id)" +
-//                " );");
+        db.execSQL("CREATE Table IF NOT EXISTS Favorites" +
+                "(favorite_id SERIAL," +
+                " favorite_at TEXT NOT NULL," +
+                " user_id INT NOT NULL," +
+                " post_id INT NOT NULL," +
+                " PRIMARY KEY(favorite_id)," +
+                " FOREIGN KEY(user_id)" +
+                " REFERENCES users(user_id)," +
+                " FOREIGN KEY(post_id)" +
+                " REFERENCES posts(post_id))");
     }
 }

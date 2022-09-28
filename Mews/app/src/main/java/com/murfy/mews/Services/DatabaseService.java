@@ -86,6 +86,14 @@ public class DatabaseService {
         return list;
     }
 
+    public Post getPostById(int id){
+        Cursor cursor = db_manager.db.rawQuery("SELECT * FROM POSTS WHERE post_id = ?", new String[]{String.valueOf(id)});
+        cursor.moveToFirst();
+        if(cursor.getCount() == 0) return null;
+        Post post =   new Post(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5), ImageEncoding.convertToBitmap(cursor.getString(6)));
+        cursor.close();
+        return  post;
+    }
     public void addPostToDb(User user, String title, String content, String location, Bitmap imageBitMap){
 
         String image_base_64 = null;

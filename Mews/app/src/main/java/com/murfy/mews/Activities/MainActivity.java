@@ -3,6 +3,7 @@ package com.murfy.mews.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -53,11 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
         post_list = new ArrayList<Post>();
         post_list = DatabaseService.getInstance(getApplicationContext()).getAllPosts();
-        PostAdapter adapter=  new PostAdapter(getApplicationContext(), R.layout.post_list_item, post_list);
+        PostAdapter adapter=  new PostAdapter(getApplicationContext(), R.layout.post_list_item, post_list, current_user);
         binding.postsList.setAdapter(adapter);
         binding.postsList.setOnItemClickListener((adapterView, view, i, l) -> {
             Intent intent = new Intent(getApplicationContext(), PostDetails.class);
-            intent.putExtra("post", post_list.get(i));
+
+            // Pass the post id because we cannot serialize a bitmap (image), or at least i don't know how
+            intent.putExtra("post_id", post_list.get(i).getPostId());
+            intent.putExtra("user", current_user);
             startActivity(intent);
         });
 

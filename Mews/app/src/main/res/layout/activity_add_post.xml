@@ -47,14 +47,6 @@
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/locationAstrike"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingHorizontal="4dp"
-                android:text="@string/required"
-                android:textColor="@color/pink" />
         </LinearLayout>
 
         <EditText
