@@ -13,8 +13,7 @@ import com.murfy.mews.databinding.ActivitySplashActivityBinding;
 
 public class SplashActivity extends AppCompatActivity {
 
-    final int SPLASH_SCREEN_DURATION_IN_MILLISECONDS = 5000;
-    final int WAIT_TILL_DATABASE_LOADS_IN_MILLISECONDS = 5000;
+    final int SPLASH_SCREEN_DURATION_IN_MILLISECONDS = 6000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +23,22 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(view);
 
-        AnimationHelper.getInstance().slideFromLeftToRight(binding.logo, 1000).fadeIn(binding.logo, 2000);
-        AnimationHelper.getInstance().fadeIn(binding.text, 1000);
+        AnimationHelper.getInstance().scaleUp(binding.logo, 1500).fadeIn(binding.logo, 2000);
 
         Delayer.getInstance().postAfter(() -> {
-            DatabaseService.getInstance(getApplicationContext());
+            AnimationHelper.getInstance().widenX(binding.logo, 1000).fadeOut(binding.logo, 900);
+            Delayer.getInstance().postAfter(() -> {
+                int drawableID = getResources().getIdentifier("ic_logo", "drawable", getPackageName());
+                binding.logo.setImageResource(drawableID);
+                AnimationHelper.getInstance().unwidenX(binding.logo, 1000).fadeIn(binding.logo, 600);
+                return null;
+            }, 1200);
             return null;
-        },  SPLASH_SCREEN_DURATION_IN_MILLISECONDS);
+        }, 2100);
+
+        AnimationHelper.getInstance().fadeIn(binding.text, 3000);
+
+        DatabaseService.getInstance(getApplicationContext());
 
         Delayer.getInstance().postAfter(() -> {
             Intent i = new Intent(getApplicationContext(), LoginActivity.class);
