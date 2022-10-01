@@ -2,7 +2,7 @@
 
 A simple, fast, and secure News app for Android.
 
-Uses a local database to store data, so you can read news even when you're offline.
+Uses a local database to store data, where you can favorite specifc posts so you can read news even when you're offline.
 
 
 
@@ -14,13 +14,14 @@ Current application design is present in Design folder, available in the reposit
 - Pdf file of the design
 - Figma file of the design
 
+<img src="./Design/preview.svg">
 
 # How to run the app
 - Clone the repository 
 ```
     git clone https://github.com/Murf-y/CSC498-Mobile-Computing.git
 ```
-- Go to ConvertPad folder
+- Go to Mews folder
  ```
     cd Mews
  ```
