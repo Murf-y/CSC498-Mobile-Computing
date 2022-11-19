@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+  <div style="display: flex; justify-items: center; align-items: center;width: 100%;">
+    <ion-img src="../../assets/logo.svg" style="width: 10rem; padding-left: 2rem; padding-top: 1rem;"></ion-img>
+  </div>
+
+  <ion-card style="margin-top: 5rem; margin-left: 2rem; margin-right: 2rem;">
+    <img alt="Dog Image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <ion-card-header style="display:flex; align-items: center; justify-content: space-between;">
+      <ion-card-title color="tertiary">Dog Brand</ion-card-title>
+      <ion-button size="small" fill="clear">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-card-header>
+  </ion-card>
+
+  <div style="margin-top: 5rem;margin-bottom: 3rem; display:flex; align-items: center; justify-content: center; flex-direction: column; gap:3rem">
+    <ion-item>
+      <ion-label position="floating">Enter a Name</ion-label>
+      <ion-input [clearInput]="true" placeholder="John Smith" color="tertiary"></ion-input>
+    </ion-item>
+    <ion-button fill="outline" size="default">Guess</ion-button>
+  </div>
+
+</ion-content>
