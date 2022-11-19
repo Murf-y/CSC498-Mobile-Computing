@@ -4,14 +4,33 @@
   </div>
 
   <ion-card style="margin-top: 5rem; margin-left: 2rem; margin-right: 2rem;">
-    <img alt="Dog Image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-    <ion-card-header style="display:flex; align-items: center; justify-content: space-between;">
+    <img  *ngIf="loaded" alt="Dog Image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <ion-card-header *ngIf="loaded" style="display:flex; align-items: center; justify-content: space-between;">
       <ion-card-title color="tertiary">Dog Brand</ion-card-title>
       <ion-button size="small" fill="clear">
         <ion-icon slot="icon-only" name="refresh"></ion-icon>
       </ion-button>
     </ion-card-header>
-    <!-- <ion-spinner name="circular" style="margin-top: 2rem; margin-left: 2rem; margin-bottom: 2rem;"></ion-spinner> -->
+
+
+    <ion-card-header *ngIf="!loaded" style="display:flex; align-items: center; justify-content: space-between;">
+      <ion-item style="width: 100%;">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
 
   </ion-card>
 
