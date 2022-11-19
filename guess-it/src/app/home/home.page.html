@@ -4,10 +4,11 @@
   </div>
 
   <ion-card style="margin-top: 5rem; margin-left: 2rem; margin-right: 2rem;">
-    <img  *ngIf="loaded" alt="Dog Image" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <img  *ngIf="loaded " alt="Something went wrong, please refresh" src={{dog.image_url}} />
     <ion-card-header *ngIf="loaded" style="display:flex; align-items: center; justify-content: space-between;">
-      <ion-card-title color="tertiary">Dog Brand</ion-card-title>
-      <ion-button size="small" fill="clear">
+      <ion-card-title color="tertiary">{{dog.breed}}</ion-card-title>
+
+      <ion-button size="small" fill="clear" (click)="getDog()">
         <ion-icon slot="icon-only" name="refresh"></ion-icon>
       </ion-button>
     </ion-card-header>
