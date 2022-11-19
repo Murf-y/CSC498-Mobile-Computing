@@ -9,6 +9,7 @@ import { DogService } from '../services/dog.service';
 })
 export class HomePage {
   public loaded = false;
+  public name = '';
   public dog : Dog = {
     image_url: '',
     breed: ''
@@ -29,6 +30,10 @@ export class HomePage {
       };
       this.loaded = true;
     });
+  }
+
+  guess(){
+    console.log(this.name);
   }
 
 }

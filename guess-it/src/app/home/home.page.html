@@ -38,9 +38,9 @@
   <div style="margin-top: 5rem;margin-bottom: 3rem; display:flex; align-items: center; justify-content: center; flex-direction: column; gap:3rem">
     <ion-item>
       <ion-label position="floating">Enter a Name</ion-label>
-      <ion-input [clearInput]="true" placeholder="John Smith" color="tertiary"></ion-input>
+      <ion-input [clearInput]="true" placeholder="John Smith" color="tertiary" [(ngModel)]="name"></ion-input>
     </ion-item>
-    <ion-button fill="outline" size="default">Guess</ion-button>
+    <ion-button fill="outline" size="default" (click)="guess()">Guess</ion-button>
   </div>
 
 </ion-content>
