@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Dog, DogResponse } from '../models/dog';
-import { DogService } from '../services/dog.service';
+import { Dog, DogResponse } from '../../models/dog';
+import { DogService } from '../../services/dog.service';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +33,11 @@ export class HomePage {
   }
 
   guess(){
-    console.log(this.name);
+    if(this.name.length > 0){
+      // go to guess page
+
+
+    }
   }
 
 }
