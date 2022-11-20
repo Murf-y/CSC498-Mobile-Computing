@@ -1,4 +1,4 @@
-# <img src ="../src/assets/logo.svg" style="width:15rem">
+# <img src ="../guess-it/src/assets/logo.svg" style="width:15rem">
 
 <p>
 A mobile application that displays a dog image on the home page, and let you enter a name and it will guess its gender, age and  nationality! using third party apis
@@ -7,9 +7,9 @@ A mobile application that displays a dog image on the home page, and let you ent
 ## Preview :camera:
 
 <div style="display:flex; gap:2rem; margin-bottom:3rem; margin-top:1rem;">
-  <img src ="../design/home.png" style="width:15rem">
-  <img src ="../design/guess_not_loaded.png" style="width:15rem">
-  <img src ="../design/guess_loaded.png" style="width:15rem">
+  <img src ="../guess-it/design/home.png" style="width:15rem">
+  <img src ="../guess-it/design/guess_not_loaded.png" style="width:15rem">
+  <img src ="../guess-it/design/guess_loaded.png" style="width:15rem">
 </div>
 
 
