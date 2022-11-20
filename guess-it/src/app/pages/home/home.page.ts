@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Dog, DogResponse } from '../../models/dog';
 import { DogService } from '../../services/dog.service';
 
@@ -15,7 +16,7 @@ export class HomePage {
     breed: ''
   };
 
-  constructor(private dogService : DogService) {}
+  constructor(private dogService : DogService, private router: Router) {}
   ionViewDidEnter() {
     this.getDog();
   }
@@ -34,9 +35,8 @@ export class HomePage {
 
   guess(){
     if(this.name.length > 0){
-      // go to guess page
-
-
+      const name = this.name.replace(/\s/g, '');
+      this.router.navigate([`/guess/${name}`]);
     }
   }
 

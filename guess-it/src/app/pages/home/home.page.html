@@ -4,7 +4,7 @@
   </div>
 
   <ion-card style="margin-top: 5rem; margin-left: 2rem; margin-right: 2rem;">
-    <img  *ngIf="loaded " alt="Something went wrong, please refresh" src={{dog.image_url}} />
+    <img  *ngIf="loaded " alt="Something went wrong, please refresh" src={{dog.image_url}}  style="width: 100%;"/>
     <ion-card-header *ngIf="loaded" style="display:flex; align-items: center; justify-content: space-between;">
       <ion-card-title color="tertiary">{{dog.breed}}</ion-card-title>
 
@@ -40,7 +40,7 @@
       <ion-label position="floating">Enter a Name</ion-label>
       <ion-input [clearInput]="true" placeholder="John Smith" color="tertiary" [(ngModel)]="name"></ion-input>
     </ion-item>
-    <ion-button fill="outline" size="default" (click)="guess()">Guess</ion-button>
+    <ion-button fill="outline" size="default" (click)=guess()>Guess</ion-button>
   </div>
 
 </ion-content>
